@@ -28,14 +28,18 @@ private View window;
 			int horas = Integer.parseInt(txtBoxString);
 			int salario = Math.min(horas, 40) * 16 + Math.max(horas - 40, 0) * 20;
 			
-			result = String.format(
-				"Salario = %dh * %d + %dh * %d = %d",
-				Math.min(horas, 40),
-				16,
-				Math.max(horas - 40, 0),
-				20,
-				salario
-			);
+			if (horas < 0)
+				result = "No se puede trabajar horas negativas :S";
+			else {
+				result = String.format(
+					"Salario = %dh€ * %d€/h + %dh€ * %d€/h = %d€",
+					Math.min(horas, 40),
+					16,
+					Math.max(horas - 40, 0),
+					20,
+					salario
+				);
+			}
 		} catch (Exception e) {
 			result = "Error";
 		}
