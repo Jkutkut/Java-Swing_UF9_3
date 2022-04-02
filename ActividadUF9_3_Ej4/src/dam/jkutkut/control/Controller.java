@@ -27,13 +27,19 @@ private View window;
 		if (txtBoxString.length() == 0)
 			result = "Introduce el número";
 		else {
-			if (Palindromo.esPalindromo(txtBoxString))
-				result = "Es capicua";
-			else
-				result = "No es capicua";
-			
-			if (txtBoxString.length() != 3)
-				result = "No tiene tamaño 3 pero " + result.toLowerCase();
+			try {
+				Integer.parseInt(txtBoxString);
+				if (Palindromo.esPalindromo(txtBoxString))
+					result = "Es capicua";
+				else
+					result = "No es capicua";
+				
+				if (txtBoxString.length() != 3)
+					result = "No tiene tamaño 3 y " + result.toLowerCase();
+			}
+			catch(Exception e) {
+				result = "Error: no es un número";
+			}
 		}
 		window.getLabel().setText(result);
 	}
